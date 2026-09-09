@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusFlow — Student Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#"><span>✦</span> CampusFlow</a>
+    <p class="eyebrow">ADMIN PORTAL</p>
+    <nav>
+      <a class="active" href="#dashboard">⌂ <span>Dashboard</span></a>
+      <a href="#students">♙ <span>Students</span></a>
+      <a href="#attendance">✓ <span>Attendance</span></a>
+      <a href="#grades">▣ <span>Grades</span></a>
+    </nav>
+    <div class="sidebar-footer"><div class="avatar">SA</div><div><b>Sarah Adams</b><small>Administrator</small></div></div>
+  </aside>
+
+  <main>
+    <header><div><p class="eyebrow">TUESDAY, SEPTEMBER 9</p><h1>Good morning, Sarah.</h1></div><button class="outline session-button" id="sessionButton">Sign in</button></header>
+
+    <section id="dashboard" class="dashboard">
+      <div class="hero"><div><p class="eyebrow">STUDENT DIRECTORY</p><h2>Everything in its place.</h2><p>Manage your campus, one clear view at a time.</p><button class="primary" id="heroAdd">+ Add new student</button></div><div class="hero-mark">⌂</div></div>
+      <div class="stats">
+        <article><span class="stat-icon amber">♙</span><div><p>Total students</p><strong id="totalStudents">0</strong><small>↑ 4.3% from last month</small></div></article>
+        <article><span class="stat-icon violet">✓</span><div><p>Avg. attendance</p><strong id="avgAttendance">0%</strong><small>↑ 1.2% from last month</small></div></article>
+        <article><span class="stat-icon teal">▣</span><div><p>Average grade</p><strong id="avgGrade">0%</strong><small>Across all classes</small></div></article>
+      </div>
+    </section>
+
+    <section id="students" class="panel">
+      <div class="section-heading"><div><p class="eyebrow">DIRECTORY</p><h2>Students</h2></div><button class="primary" id="addStudent">+ Add student</button></div>
+      <div class="toolbar"><label class="search">⌕<input id="search" placeholder="Search by name, ID or course..." /></label><select id="courseFilter"><option value="">All courses</option></select><button class="outline" id="exportBtn">⇩ Export CSV</button></div>
+      <div class="table-wrap"><table><thead><tr><th>STUDENT</th><th>STUDENT ID</th><th>COURSE</th><th>ATTENDANCE</th><th>GRADE</th><th></th></tr></thead><tbody id="studentRows"></tbody></table><p id="emptyState" class="empty" hidden>No students match this search.</p></div>
+    </section>
+
+    <section id="attendance" class="panel compact"><div class="section-heading"><div><p class="eyebrow">TODAY'S REGISTER</p><h2>Attendance</h2></div><button class="primary" id="saveAttendance">Save attendance</button></div><div id="attendanceList" class="attendance-list"></div></section>
+    <section id="grades" class="panel compact"><div class="section-heading"><div><p class="eyebrow">ACADEMIC OVERVIEW</p><h2>Grades</h2></div></div><div id="gradeList" class="grade-list"></div></section>
+  </main>
+
+  <dialog id="studentModal"><form id="studentForm" method="dialog"><div class="modal-head"><div><p class="eyebrow">STUDENT PROFILE</p><h2 id="modalTitle">Add student</h2></div><button type="button" class="close" id="closeModal">×</button></div><input type="hidden" id="studentKey"><div class="form-grid"><label>Full name<input required id="name" placeholder="e.g. Alex Morgan"></label><label>Student ID<input required id="studentId" placeholder="e.g. STU-1008"></label><label>Email<input required type="email" id="email" placeholder="alex@school.edu"></label><label>Course<input required id="course" placeholder="e.g. Computer Science"></label><label>Attendance (%)<input required type="number" min="0" max="100" id="attendance" value="90"></label><label>Grade (%)<input required type="number" min="0" max="100" id="grade" value="80"></label></div><div class="modal-actions"><button type="button" class="outline" id="cancelModal">Cancel</button><button class="primary" value="default">Save student</button></div></form></dialog>
+  <dialog id="authModal"><form id="authForm"><div class="modal-head"><div><p class="eyebrow">SECURE ACCESS</p><h2 id="authTitle">Sign in</h2></div><button type="button" class="close" id="closeAuth">×</button></div><p class="auth-copy" id="authCopy">Use your CampusFlow account to continue.</p><div class="form-grid auth-grid" id="authFields"><label>Full name<input id="authName" placeholder="Required when creating an account"></label><label>Email<input required type="email" id="authEmail" placeholder="you@school.edu"></label><label>Password<input required type="password" minlength="8" id="authPassword" placeholder="At least 8 characters"></label></div><div class="modal-actions"><button type="button" class="outline" id="toggleAuth">Create account</button><button class="primary" id="authSubmit">Sign in</button></div></form></dialog>
+  <div id="toast" role="status"></div><script type="module" src="app.js"></script>
+</body>
+</html>

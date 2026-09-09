@@ -1,0 +1,5 @@
+.session-button { height: 38px; color: #5d3fd3; }
+.auth-copy { color: #7e8191; font-size: 13px; margin: -10px 0 20px; }
+.auth-grid { grid-template-columns: 1fr; }
+.auth-grid label:first-child { display: none; }
+.auth-grid.signup label:first-child { display: block; }
