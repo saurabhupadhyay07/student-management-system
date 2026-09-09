@@ -27,3 +27,15 @@ All new accounts default to the `student` role. Administrators and teachers can 
 | DELETE | `/api/students/:id` | Delete a student |
 
 The server validates inputs, checks the authenticated user's role, and performs writes with the Supabase service key. The browser uses the anonymous key only for Supabase Auth and real-time read subscriptions. The schema includes `profiles`, `attendance_records`, `assessments`, and `audit_logs`.
+
+
+## Python analytics service
+
+This project also uses **Python** for analytics and reporting. Run `python3 python_service/analytics_service.py` to create campus-level and course-level summaries for students, attendance, grades, and assessments. The service reads Supabase data securely using server-side environment variables.
+
+### Technical stack
+
+- Frontend: HTML, CSS, JavaScript
+- Main API: Node.js and Express.js
+- Analytics & reporting: Python
+- Database, authentication & real-time: Supabase PostgreSQL
